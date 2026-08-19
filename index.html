@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bleibsichtbar Test</title>
+<style>
+  html, body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+  .wrapper {
+    width: 100%;
+    max-width: 1400px;
+    padding: 40px 30px;
+  }
+</style>
+</head>
+<body>
+
+<div class="wrapper">
+  <div style="
+    position:relative;
+    width:100%;
+    display:flex !important;
+    flex-direction:row !important;
+    flex-wrap:nowrap !important;
+    justify-content:space-between !important;
+    align-items:center !important;
+    gap:30px;
+  ">
+
+    <!-- SOL AGENT -->
+    <div style="
+      flex:1;
+      display:flex;
+      justify-content:flex-start;
+      align-items:center;
+    ">
+      <elevenlabs-convai
+        agent-id="agent_4101m0dhapn1eyxt4qy1whxg5aef"
+        dynamic-variables='{"mandator_name":"nova.de","debtor_first_name":"helmut","debtor_last_name":"Maier","date_of_birth":"20 März 1996","debt_amount_total":"200","currency":"EUR"}'>
+      </elevenlabs-convai>
+    </div>
+
+
+    <!-- ORTA LOGO (her zaman tam ortada) -->
+    <div style="
+      position:absolute;
+      left:50%;
+      top:50%;
+      transform:translate(-50%, -50%);
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      pointer-events:none;
+    ">
+      <img
+        src="/images/b2b-voice-logo.png"
+        alt="B2B Voice"
+        style="
+          width:900px;
+          max-width:90vw;
+          height:auto;
+          display:block;
+        "
+      >
+    </div>
+
+
+    <!-- SAĞ AGENT -->
+    <div style="
+      flex:1;
+      display:flex;
+      justify-content:flex-end;
+      align-items:center;
+    ">
+      <elevenlabs-convai
+        agent-id="agent_4901m0ce9wchep6rjc9m8c756vvz"
+        dynamic-variables='{"mandator_name":"nova.de","debtor_first_name":"helmut","debtor_last_name":"Maier","date_of_birth":"20 März 1996","debt_amount_total":"200","currency":"EUR"}'>
+      </elevenlabs-convai>
+    </div>
+
+  </div>
+</div>
+
+<script
+  src="https://unpkg.com/@elevenlabs/convai-widget-embed"
+  async
+  type="text/javascript">
+</script>
+
+</body>
+</html>
