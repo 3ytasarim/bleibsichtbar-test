@@ -127,5 +127,31 @@
   type="text/javascript">
 </script>
 
+<script>
+  (function () {
+    var observed = new WeakSet();
+
+    function removeOverlays(root) {
+      root.querySelectorAll('.overlay').forEach(function (el) { el.remove(); });
+    }
+
+    function watchWidget(widget) {
+      var root = widget.shadowRoot;
+      if (!root || observed.has(root)) return;
+      observed.add(root);
+      removeOverlays(root);
+      new MutationObserver(function () { removeOverlays(root); })
+        .observe(root, { childList: true, subtree: true });
+    }
+
+    var attempts = 0;
+    var interval = setInterval(function () {
+      attempts++;
+      document.querySelectorAll('elevenlabs-convai').forEach(watchWidget);
+      if (attempts > 40) clearInterval(interval);
+    }, 250);
+  })();
+</script>
+
 </body>
 </html>
